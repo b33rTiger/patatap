@@ -6,24 +6,24 @@
 	<script type="text/javascript" src="assests/js/lib/paper-full.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="assests/css/styles.css">
 	<script type="text/paperscript" canvas="myCanvas">
-		var rows = 10;
-		var cols = 10;
-		var x;
-		var y;
-		var xstart = 0;
-		var ystart = 0;
-		var xspacing = 100;
-		var yspacing = 100;
+		// var rows = 10;
+		// var cols = 10;
+		// var x = 100;
+		// var y = 100;
+		// var xstart = 0;
+		// var ystart = 0;
+		// var xspacing = 100;
+		// var yspacing = 100;
 		var radius = 10;
 		var fillColor = 'purple';
 
-		for(var row = 1; row <= rows; row++) {
-			y = ystart + (row - 1) * yspacing;
-				for(var col = 1; col <= cols; col++) {
-					x = xstart + (col - 1) * xspacing;
-					new Path.Circle(new Point(x, y), radius).fillColor = fillColor;
-				}
-		}
+		function onKeyDown(event) {
+			var maxPoint = new Point(view.size.width, view.size.height);
+			var randomPoint = Point.random();
+			var point = maxPoint * randomPoint;
+			new Path.Circle(point, radius).fillColor = fillColor;
+		};
+
 	</script>
 </head>
 <body>
