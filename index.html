@@ -8,9 +8,6 @@
 	<link rel="stylesheet" type="text/css" href="assests/css/styles.css">
 	<script type="text/paperscript" canvas="myCanvas">
 
-		var radius = 500;
-		var fillColor = 'purple';
-		var circles = [];
 		var keyData = {
 			q: {
 				sound: new Howl({
@@ -36,7 +33,7 @@
 				}),
 				color: '#9b59b6'
 			},
-				t: {
+			t: {
 				sound: new Howl({
 		  		src: ['assests/sounds/dotted-spiral.mp3']
 				}),
@@ -84,7 +81,7 @@
 				}),
 				color: '#e67e22'
 			},
-				d: {
+			d: {
 				sound: new Howl({
 		  		src: ['assests/sounds/piston-2.mp3']
 				}),
@@ -169,6 +166,8 @@
 				color: '#2c3e50'
 			}
 		}
+		var radius = 500;
+		var circles = [];
 
 		function onKeyDown(event) {
 			if(keyData[event.key]) {
@@ -185,7 +184,11 @@
 		function onFrame(event) {
 			for(var i = 0; i < circles.length; i++) {
 				circles[i].fillColor.hue += 1;
-				circles[i].scale(.9);
+				circles[i].scale(0.9);
+				if(circles[i].area < 1) {
+					circles[i].remove();
+					circles.splice(i, 1);
+				};
 			};
 		};
 
